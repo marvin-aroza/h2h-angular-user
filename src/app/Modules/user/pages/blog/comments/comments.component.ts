@@ -41,7 +41,7 @@ export class CommentsComponent implements OnInit {
   getPostDetails() {
     this.postService.getPostById(this.postId).subscribe(res => {
       console.log(res);
-      this.postDetail = res.data
+      this.postDetail = res.data[0]
     });
   }
 

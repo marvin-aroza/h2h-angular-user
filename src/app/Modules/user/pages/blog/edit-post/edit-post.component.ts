@@ -49,7 +49,7 @@ export class EditPostComponent implements OnInit {
   getPostList() {
     this.postservice.getPostById(this.postId).subscribe(res => {
       console.log(res);
-      this.postDetails = res.data
+      this.postDetails = res.data[0]
       this.createAddPostForm()
     });
   }
