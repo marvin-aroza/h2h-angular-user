@@ -1,0 +1,86 @@
+<div class="col-md-12">
+
+  <div class="row" *ngIf="formLoaded">
+    <div class="col-12 col-md-6">
+      <div class="col-md-12 text-center contact_margin_svnit ">
+        <div class="text-center fh5co_heading py-2">Register</div>
+      </div>
+      <form class="row" id="fh5co_contact_form" [formGroup]="form" (ngSubmit)="register()">
+        <div class="col-6 py-3">
+          <input type="text" class="form-control fh5co_contact_text_box" placeholder="Enter Your First Name" formControlName="first_name"/>
+          <div *ngIf="isFormSubmitted && f.first_name.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.first_name.errors.required">*First Name is required</div>
+          </div>
+        </div>
+        <div class="col-6 py-3">
+          <input type="text" class="form-control fh5co_contact_text_box" placeholder="Enter Your Last Name" formControlName="last_name"/>
+          <div *ngIf="isFormSubmitted && f.last_name.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.last_name.errors.required">*Last Name is required</div>
+          </div>
+        </div>
+        <div class="col-6 py-3">
+          <input type="email" class="form-control fh5co_contact_text_box" placeholder="Enter Your Email" formControlName="email"/>
+          <div *ngIf="isFormSubmitted && f.email.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.email.errors.required">*Email is required</div>
+          </div>
+          <div *ngIf="isFormSubmitted && f.email.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.email.errors.email">*Enter a valid email</div>
+          </div>
+        </div>
+        <div class="col-6 py-3">
+          <input type="email" class="form-control fh5co_contact_text_box" placeholder="Enter Your Username" formControlName="username"/>
+          <div *ngIf="isFormSubmitted && f.username.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.username.errors.required">*Username is required</div>
+          </div>
+        </div>
+        <div class="col-6 py-3">
+          <input type="text" class="form-control fh5co_contact_text_box" placeholder="Enter Your Phone Number" formControlName="phone"/>
+          <div *ngIf="isFormSubmitted && f.phone.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.phone.errors.required">*Phone is required</div>
+          </div>
+        </div>
+        <div class="col-6 py-3">
+          <select class="form-control fh5co_contact_text_box" formControlName="gender">
+            <option [selected]="true" [value]="">Select Gender</option>
+            <option [value]="gender.Male">{{gender.Male}}</option>
+            <option [value]="gender.Female">{{gender.Female}}</option>
+            <option [value]="gender.Other">{{gender.Other}}</option>
+          </select>
+          <div *ngIf="isFormSubmitted && f.gender.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.gender.errors.required">*Gender is required</div>
+          </div>
+          <!-- <input type="email" class="form-control fh5co_contact_text_box" placeholder="Enter Your Gender" /> -->
+        </div>
+        <div class="col-6 py-3">
+          <input type="password" class="form-control fh5co_contact_text_box" placeholder="Enter Your Password" formControlName="password"/>
+          <div *ngIf="isFormSubmitted && f.password.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.password.errors.required">*Password is required</div>
+          </div>
+        </div>
+        <div class="col-6 py-3">
+          <input type="password" class="form-control fh5co_contact_text_box" placeholder="Confirm Your Password" formControlName="confirm_password" />
+          <div *ngIf="isFormSubmitted && f.confirm_password.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.confirm_password.errors.required">*Confirm Password is required</div>
+            <div *ngIf="f.confirm_password.errors.mustMatch">*Password does not match</div>
+          </div>
+        </div>
+        <div class="col-12 py-3 text-center"> <button class="btn contact_btn" type="submit">Register</button> </div>
+      </form>
+    </div>
+    <div class="col-12 col-md-6 align-self-center" style="border-left: 8px solid #f5bc04 !important;">
+      <div class="col-md-12 text-center contact_margin_svnit ">
+        <div class="text-center fh5co_heading py-2">Already Registered?</div>
+        <div class="col-12 py-3 text-center"> <a class="btn contact_btn" (click)="login()">Login</a> </div>
+      </div>
+    </div>
+  </div>
+</div>

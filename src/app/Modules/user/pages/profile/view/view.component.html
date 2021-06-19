@@ -1,0 +1,216 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4" *ngIf="userDetails">
+      <div class="profile-card-4 z-depth-3">
+        <div class="card">
+          <div class="card-body text-center bg-primary rounded-top">
+            <div class="user-box">
+              <img [src]="userDetails?.profImage | defaultImage:userDetails?.profImage" alt="user avatar">
+            </div>
+            <h5 class="mb-1 text-white">{{userDetails.firstname}} {{userDetails.lastname}}</h5>
+            <!-- <h6 class="text-light">UI/UX Engineer</h6> -->
+          </div>
+          <div class="card-body">
+            <ul class="list-group shadow-none">
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fa fa-phone-square"></i>
+                </div>
+                <div class="list-details">
+                  <span>{{userDetails.phone}}</span>
+                  <small>Mobile Number</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fa fa-envelope"></i>
+                </div>
+                <div class="list-details">
+                  <span>{{userDetails.email}}</span>
+                  <small>Email Address</small>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fa fa-globe"></i>
+                </div>
+                <div class="list-details">
+                  <span>{{userDetails.username}}</span>
+                  <small>Username</small>
+                </div>
+              </li>
+            </ul>
+            <div class="row text-center mt-4">
+              <div class="col p-2">
+                <h4 class="mb-1 line-height-5">{{userDetails.gender}}</h4>
+                <small class="mb-0 font-weight-bold">Gender</small>
+              </div>
+              <div class="col p-4">
+                <h4 class="mb-1 line-height-5">{{userDetails.createdAt | date:'short'}}</h4>
+                <small class="mb-0 font-weight-bold">Joined</small>
+              </div>
+              <!-- <div class="col p-2">
+                       <h4 class="mb-1 line-height-5">9.1k</h4>
+                       <small class="mb-0 font-weight-bold">Views</small>
+                      </div> -->
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i
+                class="fa fa-facebook"></i></a>
+            <a href="javascript:void()" class="btn-social btn-google-plus waves-effect waves-light m-1"><i
+                class="fa fa-google-plus"></i></a>
+            <a href="javascript:void()" class="list-inline-item btn-social btn-behance waves-effect waves-light"><i
+                class="fa fa-behance"></i></a>
+            <a href="javascript:void()" class="list-inline-item btn-social btn-dribbble waves-effect waves-light"><i
+                class="fa fa-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card z-depth-3">
+        <div class="card-body">
+          <ul class="nav nav-pills nav-pills-primary nav-justified">
+            <li class="nav-item">
+              <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i
+                  class="icon-user"></i> <span class="hidden-xs">Posts</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i
+                  class="icon-envelope-open"></i> <span class="hidden-xs">Messages</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
+                  class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+            </li>
+          </ul>
+          <div class="tab-content p-3">
+            <div class="tab-pane active show" id="profile">
+              <h5 class="mb-3">Posts</h5>
+              <div class="row">
+                <div class="col-md-12">
+                  <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> </h5>
+                  <table class="table table-hover table-striped" *ngIf="postList">
+                    <tbody>
+                      <tr *ngFor="let post of postList" [routerLink]="['/page/blog/edit', post._id]" style="cursor: pointer;">
+                        <td>
+                          <strong>{{post.title}}</strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/row-->
+            </div>
+            <div class="tab-pane" id="messages">
+              <!-- <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <div class="alert-icon">
+                  <i class="icon-info"></i>
+                </div>
+                <div class="alert-message">
+                  <span><strong>Info!</strong> Lorem Ipsum is simply dummy text.</span>
+                </div>
+              </div> -->
+              <table class="table table-hover table-striped" *ngIf="contactList">
+                <tbody>
+                  <tr>
+                    <td *ngFor="let cont of contactList">
+                      <span class="float-right font-weight-bold">{{cont.createdAt | date:'short'}}</span> {{cont.message
+                      | stringChecker:cont.message}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane" id="edit" *ngIf="formLoaded">
+              <form [formGroup]="form" (ngSubmit)="update()">
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="text" formControlName="firstname">
+                    <div *ngIf="isFormSubmitted && f.firstname.errors" class="invalid-feedback valid-error"
+                      style="font-size: .7rem; color: red; position:absolute;">
+                      <div *ngIf="f.firstname.errors.required">*First Name is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="text" formControlName="lastname">
+                    <div *ngIf="isFormSubmitted && f.lastname.errors" class="invalid-feedback valid-error"
+                      style="font-size: .7rem; color: red; position:absolute;">
+                      <div *ngIf="f.lastname.errors.required">*Last Name is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="email" formControlName="email">
+                    <div *ngIf="isFormSubmitted && f.email.errors" class="invalid-feedback valid-error"
+                      style="font-size: .7rem; color: red; position:absolute;">
+                      <div *ngIf="f.email.errors.required">*Email is required</div>
+                    </div>
+                    <div *ngIf="isFormSubmitted && f.email.errors" class="invalid-feedback valid-error"
+                      style="font-size: .7rem; color: red; position:absolute;">
+                      <div *ngIf="f.email.errors.email">*Enter a valid email</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="text" formControlName="username">
+                    <div *ngIf="isFormSubmitted && f.username.errors" class="invalid-feedback valid-error"
+                      style="font-size: .7rem; color: red; position:absolute;">
+                      <div *ngIf="f.username.errors.required">*Username is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Gender</label>
+                  <div class="col-lg-9">
+                    <!-- <input class="form-control" type="text" value="jhonsanmark"> -->
+                    <select class="form-control"  formControlName="gender">
+                      <option [selected]="true" [value]="">Select Gender</option>
+                      <option [value]="gender.Male">{{gender.Male}}</option>
+                      <option [value]="gender.Female">{{gender.Female}}</option>
+                      <option [value]="gender.Other">{{gender.Other}}</option>
+                    </select>
+                    <div *ngIf="isFormSubmitted && f.gender.errors" class="invalid-feedback valid-error"
+                      style="font-size: .7rem; color: red; position:absolute;">
+                      <div *ngIf="f.gender.errors.required">*Gender is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Phone</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="text"  formControlName="phone">
+                    <div *ngIf="isFormSubmitted && f.phone.errors" class="invalid-feedback valid-error"
+                      style="font-size: .7rem; color: red; position:absolute;">
+                      <div *ngIf="f.phone.errors.required">*Phone is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label"></label>
+                  <div class="col-lg-9">
+                    <input type="reset" class="btn btn-secondary" value="Cancel">
+                    <input type="submit" class="btn btn-primary" value="Save Changes">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

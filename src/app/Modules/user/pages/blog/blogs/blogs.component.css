@@ -1,0 +1,36 @@
+/* .my-pagination /deep/ .ngx-pagination .current {
+  background: red;
+}
+
+
+.my-pagination /deep/ .ngx-pagination .pagination-previous {
+  background: #f1f1f1 !important;
+    padding: 12px 20px !important;
+    color: #222 !important;
+    font-weight: 800 !important;
+    margin: 0 10px !important;
+    -moz-transition: all .5s ease !important;
+    -o-transition: all .5s ease !important;
+    -webkit-transition: all .5s ease !important;
+    -ms-transition: all .5s ease !important;
+    transition: all .5s ease !important;
+}
+
+.my-pagination /deep/ .ngx-pagination .pagination-previous:hover {
+  background: #222 !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+}
+
+.my-pagination /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: black !important;
+  color: white;
+}
+
+.my-pagination /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+  color: white;
+} */
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: black;
+}

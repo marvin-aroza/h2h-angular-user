@@ -1,0 +1,21 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div id="main-content" class="blog-page" *ngIf="newsDetail">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 left-box">
+        <div class="card single_post">
+          <div class="body">
+            <div class="img-post">
+              <img class="d-block img-fluid" [src]="newsDetail.image | defaultImage:newsDetail.image" alt="First slide">
+            </div>
+            <h3><a href="blog-details.html">{{newsDetail.title}}</a></h3>
+            <!-- <p>{{newsDetail.body}}</p> -->
+            <div [innerHTML]="newsDetail.body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

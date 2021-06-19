@@ -1,0 +1,39 @@
+<div class="col-md-12">
+
+  <div class="row" *ngIf="formLoaded">
+    <div class="col-12 col-md-6">
+      <div class="col-md-12 text-center contact_margin_svnit ">
+        <div class="text-center fh5co_heading py-2">Login</div>
+      </div>
+      <form class="row" id="fh5co_contact_form" [formGroup]="form" (ngSubmit)="login()">
+        <div class="col-12 py-3">
+          <input type="email" class="form-control fh5co_contact_text_box" placeholder="Enter Your Email"
+            formControlName="email" />
+          <div *ngIf="isFormSubmitted && f.email.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.email.errors.required">*Email is required</div>
+          </div>
+          <div *ngIf="isFormSubmitted && f.email.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.email.errors.email">*Enter a valid email</div>
+          </div>
+        </div>
+        <div class="col-12 py-3">
+          <input type="password" class="form-control fh5co_contact_text_box" placeholder="Enter Your Password"
+            formControlName="password" />
+            <div *ngIf="isFormSubmitted && f.password.errors" class="invalid-feedback valid-error"
+            style="font-size: .7rem; color: red; position:absolute;">
+            <div *ngIf="f.password.errors.required">*Password is required</div>
+          </div>
+        </div>
+        <div class="col-12 py-3 text-center"> <button class="btn contact_btn" type="submit">Login</button> </div>
+      </form>
+    </div>
+    <div class="col-12 col-md-6 align-self-center" style="border-left: 8px solid #f5bc04 !important;">
+      <div class="col-md-12 text-center contact_margin_svnit ">
+        <div class="text-center fh5co_heading py-2">New Here?</div>
+        <div class="col-12 py-3 text-center"> <a class="btn contact_btn" (click)="register()">Register</a> </div>
+      </div>
+    </div>
+  </div>
+</div>

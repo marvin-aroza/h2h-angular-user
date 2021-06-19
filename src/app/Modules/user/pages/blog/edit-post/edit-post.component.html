@@ -1,0 +1,43 @@
+<div class="container col-md-12" style="display: flex;justify-content: center;margin-top: 50px;"><h2 style="font-weight: bolder;font-size: 35px!important;">Update Post</h2></div>
+<div class="container inner contact" style="margin-top: 20px;">
+  <!-- Form Area -->
+  <div class="contact-form" *ngIf="isLoaded">
+      <!-- Form -->
+      <form id="contact-us" [formGroup]="Form" class="user" (ngSubmit)="createPost()">
+          <!-- Left Inputs -->
+          <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+              <!-- Name -->
+              <input type="text" name="name" id="name" required="required" class="form" placeholder="Title" formControlName="title"/>
+              <span class="error-span" *ngIf="isSubmitted && fvalues.title.errors?.required">Title is required</span>
+
+              <!-- Email -->
+              <input type="email" name="mail" id="mail" required="required" class="form" placeholder="Subtitle"  formControlName="subtitle"/>
+              <select class="form" formControlName="categoryId">
+                <option>Select Category</option>
+                <option *ngFor="let cat of catList" [value]="cat._id">{{cat.name}}</option>
+              </select>
+              <!-- Subject -->
+
+              <label>Image</label>
+              <div>
+                <img [src]="postDetails.image | defaultImage:postDetails.image" width="300">
+              </div>
+              <input type="file" name="mail" id="mail" required="required" class="form" placeholder="image"  (change)="onImgFileChange($event)"/>
+              <label>Video</label>
+              <div>
+                <img [src]="postDetails.video | defaultImage:postDetails.video" width="300">
+              </div>
+              <input type="file" name="mail" id="mail" required="required" class="form" placeholder="video"  (change)="onVideoFileChange($event)"/>
+              <ckeditor data="<p>Hello, world!</p>" formControlName="desc"></ckeditor>
+          </div>
+          <div class="relative fullwidth col-xs-12">
+              <!-- Send Button -->
+              <button type="submit" id="submit" name="submit" class="form-btn semibold">Update Post</button>
+          </div><!-- End Bottom Submit -->
+          <!-- Clear -->
+          <div class="clear"></div>
+      </form>
+
+  </div><!-- End Contact Form Area -->
+</div><!-- End Inner -->
+

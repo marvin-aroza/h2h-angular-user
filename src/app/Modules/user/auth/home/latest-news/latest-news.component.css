@@ -1,0 +1,97 @@
+body{margin-top:20px !important;}
+
+.section {
+    padding: 100px 0 !important;
+    position: relative !important;
+}
+.gray-bg {
+    background-color: #ebf4fa !important;
+}
+/* Blog
+---------------------*/
+.blog-grid {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+.blog-grid .blog-img {
+  position: relative !important;
+  border-radius: 5px !important;
+  overflow: hidden !important;
+}
+.blog-grid .blog-img .date {
+  position: absolute !important;
+  background: #3a3973 !important;
+  color: #ffffff !important;
+  padding: 8px 15px !important;
+  left: 0 !important;
+  top: 10px !important;
+  font-size: 14px !important;
+}
+.blog-grid .blog-info {
+  box-shadow: 0 0 30px rgba(31, 45, 61, 0.125) !important;
+  border-radius: 5px !important;
+  background: #ffffff !important;
+  padding: 20px !important;
+  margin: -30px 20px 0 !important;
+  position: relative !important;
+}
+.blog-grid .blog-info h5 {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  margin: 0 0 10px !important;
+}
+.blog-grid .blog-info h5 a {
+  color: #3a3973 !important;
+}
+.blog-grid .blog-info p {
+  margin: 0 !important;
+}
+.blog-grid .blog-info .btn-bar {
+  margin-top: 20px !important;
+}
+
+.px-btn-arrow {
+    padding: 0 50px 0 0 !important;
+    line-height: 20px !important;
+    position: relative !important;
+    display: inline-block !important;
+    color: #fe4f6c !important;
+    -moz-transition: ease all 0.3s !important;
+    -o-transition: ease all 0.3s !important;
+    -webkit-transition: ease all 0.3s !important;
+    transition: ease all 0.3s !important;
+}
+
+
+.px-btn-arrow .arrow {
+    width: 13px !important;
+    height: 2px !important;
+    background: currentColor !important;
+    display: inline-block !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    margin: auto !important;
+    right: 25px !important;
+    -moz-transition: ease right 0.3s !important;
+    -o-transition: ease right 0.3s !important;
+    -webkit-transition: ease right 0.3s !important;
+    transition: ease right 0.3s !important;
+}
+
+.px-btn-arrow .arrow:after {
+    width: 8px !important;
+    height: 8px !important;
+    border-right: 2px solid currentColor !important;
+    border-top: 2px solid currentColor !important;
+    content: "" !important;
+    position: absolute !important;
+    top: -3px !important;
+    right: 0 !important;
+    display: inline-block !important;
+    -moz-transform: rotate(45deg) !important;
+    -o-transform: rotate(45deg) !important;
+    -ms-transform: rotate(45deg) !important;
+    -webkit-transform: rotate(45deg) !important;
+    transform: rotate(45deg) !important;
+}

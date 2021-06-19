@@ -1,0 +1,11 @@
+.nav-item {
+  cursor: pointer;
+}
+
+.nav-new-color {
+  color: white !important;
+}
+
+.bg-faded {
+  background-color: #000000 !important;
+}

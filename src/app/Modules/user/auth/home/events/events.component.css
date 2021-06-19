@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+*
+{
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-sizing: border-box !important
+}
+
+body
+{
+  background-color: #dadde6 !important;
+  font-family: arial !important
+}
+
+.fl-left{float: left !important}
+
+.fl-right{float: right !important}
+
+.container
+{
+  width: 90% !important;
+  margin: 100px auto !important
+}
+
+h1
+{
+  text-transform: uppercase !important;
+  font-weight: 900 !important;
+  border-left: 10px solid #fec500 !important;
+  padding-left: 10px !important;
+  margin-bottom: 30px !important
+}
+
+.row{overflow: hidden !important}
+
+.card
+{
+  display: table-row !important;
+  width: 49% !important;
+  background-color: #fff !important;
+  color: #989898 !important;
+  /* margin-bottom: 10px !important; */
+  font-family: 'Oswald', sans-serif !important;
+  text-transform: uppercase !important;
+  border-radius: 4px !important;
+  position: relative !important
+}
+
+.card + .card{margin-left: 2% !important}
+
+.date
+{
+  display: table-cell !important;
+  width: 25% !important;
+  position: relative !important;
+  text-align: center !important;
+  border-right: 2px dashed #dadde6 !important
+}
+
+.date:before,
+.date:after
+{
+  content: "" !important;
+  display: block !important;
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #DADDE6 !important;
+  position: absolute !important;
+  top: -15px  !important;
+  right: -15px !important;
+  z-index: 1 !important;
+  border-radius: 50% !important
+}
+
+.date:after
+{
+  top: auto !important;
+  bottom: -15px !important
+}
+
+.date time
+{
+  display: block !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  -webkit-transform: translate(-50%, -50%) !important;
+  -ms-transform: translate(-50%, -50%) !important;
+  transform: translate(-50%, -50%) !important
+}
+
+.date time span{display: block !important}
+
+.date time span:first-child
+{
+  color: #2b2b2b !important;
+  font-weight: 600 !important;
+  font-size: 250% !important
+}
+
+.date time span:last-child
+{
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  margin-top: 15px !important
+}
+
+.card-cont
+{
+  display: table-cell !important;
+  width: 75% !important;
+  font-size: 85% !important;
+  padding: 10px 10px 30px 50px !important
+}
+
+.card-cont h3
+{
+  color: #3C3C3C !important;
+  font-size: 130% !important
+}
+
+.row:last-child .card:last-of-type .card-cont h3
+{
+  text-decoration: line-through !important
+}
+
+.card-cont > div
+{
+  display: table-row !important
+}
+
+.card-cont .even-date i,
+.card-cont .even-info i,
+.card-cont .even-date time,
+.card-cont .even-info p
+{
+  display: table-cell !important
+}
+
+.card-cont .even-date i,
+.card-cont .even-info i
+{
+  padding: 5% 5% 0 0 !important
+}
+
+.card-cont .even-info p
+{
+  padding: 30px 50px 0 0 !important
+}
+
+.card-cont .even-date time span
+{
+  display: block !important
+}
+
+.card-cont a
+{
+  display: block !important;
+  text-decoration: none !important;
+  width: 80px !important;
+  height: 30px !important;
+  background-color: #D8DDE0 !important;
+  color: #fff !important;
+  text-align: center !important;
+  line-height: 30px !important;
+  border-radius: 2px !important;
+  position: absolute !important;
+  right: 10px !important;
+  bottom: 10px !important
+}
+
+.row:last-child .card:first-child .card-cont a
+{
+  background-color: #037FDD !important
+}
+
+.row:last-child .card:last-child .card-cont a
+{
+  background-color: #F8504C !important
+}
+
+@media screen and (max-width: 860px)
+{
+  .card
+  {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    margin-bottom: 10px !important
+  }
+
+  .card + .card{margin-left: 0 !important}
+
+  .card-cont .even-date,
+  .card-cont .even-info
+  {
+    font-size: 75% !important
+  }
+}

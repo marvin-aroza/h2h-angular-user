@@ -1,0 +1,82 @@
+<div class="container-fluid pb-4 pt-4 paddding">
+  <div class="container paddding">
+      <div class="row mx-0">
+          <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft" *ngIf="postList">
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Posts</div>
+              </div>
+              <div class="row pb-4" *ngFor="let post of postList" [routerLink]="['/page/blog/view/', post._id]">
+                  <div class="col-md-5">
+                      <div class="fh5co_hover_news_img" style="cursor: pointer;">
+                          <div class="fh5co_news_img"><img [src]="post.image | defaultImage:post.image" alt=""/></div>
+                          <div></div>
+                      </div>
+                  </div>
+                  <div class="col-md-7 animate-box" style="cursor: pointer;">
+                      <a  class="fh5co_magna py-2" >{{post.title}} </a> <a  class="fh5co_mini_time py-3"> {{post?.firstname[0]?.firstname}} {{post?.firstname[0]?.lastname}} -
+                        {{post.createdAt | date: 'short'}} </a>
+                      <div class="fh5co_consectetur" [innerHTML]="post.description | stringChecker:post.description:'para'">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Categories</div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="fh5co_tags_all">
+                  <a class="fh5co_tagg" *ngFor="let cat of categories" [routerLink]="['/page/blog', cat._id]">{{cat.name}}</a>
+              </div>
+              <div>
+                  <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+              </div>
+              <div class="row pb-3">
+                  <div class="col-5 align-self-center">
+                      <img src="assets/images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
+                  </div>
+                  <div class="col-7 paddding">
+                      <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                      <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                  </div>
+              </div>
+              <div class="row pb-3">
+                  <div class="col-5 align-self-center">
+                      <img src="assets/images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
+                  </div>
+                  <div class="col-7 paddding">
+                      <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
+                      <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                  </div>
+              </div>
+              <div class="row pb-3">
+                  <div class="col-5 align-self-center">
+                      <img src="assets/images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
+                  </div>
+                  <div class="col-7 paddding">
+                      <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                      <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                  </div>
+              </div>
+              <div class="row pb-3">
+                  <div class="col-5 align-self-center"><img src="assets/images/seth-doyle-133175.jpg" alt="img"
+                                                            class="fh5co_most_trading"/></div>
+                  <div class="col-7 paddding">
+                      <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                      <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- <div class="row mx-0 animate-box" data-animate-effect="fadeInUp">
+          <div class="col-12 text-center pb-4 pt-4">
+              <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>
+              <a href="#" class="btn_pagging">1</a>
+              <a href="#" class="btn_pagging">2</a>
+              <a href="#" class="btn_pagging">3</a>
+              <a href="#" class="btn_pagging">...</a>
+              <a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+           </div>
+      </div> -->
+  </div>
+</div>

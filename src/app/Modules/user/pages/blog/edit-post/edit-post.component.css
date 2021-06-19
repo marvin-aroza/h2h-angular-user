@@ -1,0 +1,126 @@
+#contact{
+  padding:10px 0 10px !important;
+}
+
+.contact-text{
+  margin:45px auto !important;
+}
+
+.mail-message-area{
+  width:100% !important;
+  padding:0 15px !important;
+}
+
+.mail-message{
+  width: 100% !important;
+  background:rgba(255,255,255, 0.8) !important;
+  -webkit-transition: all 0.7s !important;
+  -moz-transition: all 0.7s !important;
+  transition: all 0.7s !important;
+  margin:0 auto !important;
+  border-radius: 0 !important;
+}
+
+.not-visible-message{
+  height:0px !important;
+  opacity: 0 !important;
+}
+
+.visible-message{
+  height:auto !important;
+  opacity: 1 !important;
+  margin:25px auto 0 !important;
+}
+
+/* Input Styles */
+
+.form{
+  width: 100% !important;
+  padding: 15px !important;
+  background:#f8f8f8 !important;
+  border:1px solid rgba(0, 0, 0, 0.075) !important;
+  margin-bottom:25px !important;
+  color:#727272 !important;
+  font-size:13px !important;
+  -webkit-transition: all 0.4s !important;
+  -moz-transition: all 0.4s !important;
+  transition: all 0.4s !important;
+}
+
+.form:hover{
+  border:1px solid #8BC3A3 !important;
+}
+
+.form:focus{
+  color: black !important;
+  outline: none !important;
+  border:1px solid #8BC3A3 !important;
+}
+
+.textarea{
+  height: 200px !important;
+  max-height: 200px !important;
+  max-width: 100% !important;
+}
+
+/* Generic Button Styles */
+
+.button{
+  padding:8px 12px !important;
+  background:#0A5175 !important;
+  display: block !important;
+  width:120px !important;
+  margin:10px 0 0px 0 !important;
+  border-radius:3px !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  transition: all 0.3s !important;
+  text-align:center !important;
+  font-size:0.8em !important;
+  box-shadow: 0px 1px 4px rgba(0,0,0, 0.10) !important;
+  -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10) !important;
+  -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10) !important;
+}
+
+.button:hover{
+  background:#8BC3A3 !important;
+  color:white !important;
+}
+
+/* Send Button Styles */
+
+.form-btn{
+  width:180px !important;
+  display: block !important;
+  height: auto !important;
+  padding:15px !important;
+  color:#fff !important;
+  background:#8BC3A3 !important;
+  border:none !important;
+  border-radius:3px !important;
+  outline: none !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  transition: all 0.3s !important;
+  margin:auto !important;
+  box-shadow: 0px 1px 4px rgba(0,0,0, 0.10) !important;
+  -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10) !important;
+  -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10) !important;
+}
+
+.form-btn:hover{
+  background:#111 !important;
+  color: white !important;
+  border:none !important;
+}
+
+.form-btn:active{
+  opacity: 0.9 !important;
+}
+center{
+margin-top:330px !important;
+}
+input {
+  position: relative !important;
+  z-index: 9999 !important;
+}

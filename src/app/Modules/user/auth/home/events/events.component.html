@@ -1,0 +1,107 @@
+<section class="container" *ngIf="eventDetails">
+  <h1>Events</h1>
+  <div class="row">
+    <article class="card fl-left">
+      <section class="date">
+        <time datetime="23th feb">
+          <span>{{ eventDetails[0].eventDate | dateConvertor:eventDetails[0].eventDate :'date'}}</span><span>{{ eventDetails[0].eventDate | dateConvertor:eventDetails[0].eventDate :'month'}}</span>
+        </time>
+      </section>
+      <section class="card-cont">
+        <small>{{eventDetails[0].host}}</small>
+        <h3>live in {{eventDetails[0].place}}</h3>
+        <div class="even-date">
+          <i class="fa fa-calendar"></i>
+          <time>
+            <span>{{eventDetails[0].eventDate | date: 'medium'}}</span>
+            <span>{{eventDetails[0].startTime}} to {{eventDetails[0].endTime}}</span>
+          </time>
+        </div>
+        <div class="even-info">
+          <i class="fa fa-map-marker"></i>
+          <p>
+            {{eventDetails[0].address}}
+          </p>
+        </div>
+        <a>{{eventDetails[0].status}}</a>
+      </section>
+    </article>
+    <article class="card fl-left">
+      <section class="date">
+        <time datetime="23th feb">
+          <span>{{ eventDetails[1].eventDate | dateConvertor:eventDetails[1].eventDate:'date'}}</span><span>{{ eventDetails[1].eventDate | dateConvertor:eventDetails[1].eventDate:'month'}}</span>
+        </time>
+      </section>
+      <section class="card-cont">
+        <small>{{eventDetails[1].host}}</small>
+        <h3>Live in {{eventDetails[1].place}}</h3>
+        <div class="even-date">
+          <i class="fa fa-calendar"></i>
+          <time>
+            <span>{{eventDetails[1].eventDate | date: 'medium'}}</span>
+            <span>{{eventDetails[1].startTime}} to {{eventDetails[1].endTime}}</span>
+          </time>
+        </div>
+        <div class="even-info">
+          <i class="fa fa-map-marker"></i>
+          <p>
+            {{eventDetails[1].address}}
+          </p>
+        </div>
+        <a>{{eventDetails[1].status}}</a>
+      </section>
+    </article>
+  </div>
+  <div class="row">
+    <article class="card fl-left">
+      <section class="date">
+        <time datetime="23th feb">
+          <span>{{ eventDetails[2].eventDate | dateConvertor:eventDetails[2].eventDate:'date'}}</span><span>{{ eventDetails[2].eventDate | dateConvertor:eventDetails[2].eventDate:'month'}}</span>
+        </time>
+      </section>
+      <section class="card-cont">
+        <small>{{eventDetails[2].host}}</small>
+        <h3>Live in {{eventDetails[2].place}}</h3>
+        <div class="even-date">
+          <i class="fa fa-calendar"></i>
+          <time>
+            <span>{{eventDetails[2].eventDate | date: 'medium'}}</span>
+            <span>{{eventDetails[2].startTime}} to {{eventDetails[2].endTime}}</span>
+          </time>
+        </div>
+        <div class="even-info">
+          <i class="fa fa-map-marker"></i>
+          <p>
+            {{eventDetails[2].address}}
+          </p>
+        </div>
+        <a>{{eventDetails[2].status}}</a>
+      </section>
+    </article>
+    <article class="card fl-left">
+      <section class="date">
+        <time datetime="23th feb">
+          <span>{{ eventDetails[3].eventDate | dateConvertor:eventDetails[3].eventDate :'date'}}</span><span>{{ eventDetails[3].eventDate | dateConvertor:eventDetails[3].eventDate :'month'}}</span>
+        </time>
+      </section>
+      <section class="card-cont">
+        <small>{{eventDetails[3].host}}</small>
+        <h3>Live in {{eventDetails[3].place}}</h3>
+        <div class="even-date">
+          <i class="fa fa-calendar"></i>
+          <time>
+            <span>{{eventDetails[3].eventDate | date: 'medium'}}</span>
+            <span>{{eventDetails[3].startTime}} to {{eventDetails[3].endTime}}</span>
+          </time>
+        </div>
+        <div class="even-info">
+          <i class="fa fa-map-marker"></i>
+          <p>
+            {{eventDetails[3].address}}
+          </p>
+        </div>
+        <a>{{eventDetails[3].status}}</a>
+      </section>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+<div *ngIf="forumId">
+  <app-comments [forumId]="forumId"></app-comments>
+</div>
+<main class="content">
+  <div class="container p-0">
+
+    <h1 class="h3 mb-3">Discussions</h1>
+
+    <div class="card">
+      <div class="row g-0">
+        <div class="col-12 col-lg-7 col-xl-12">
+
+
+          <div class="position-relative">
+            <div class="chat-messages p-4" *ngIf="comments.length > 0; else noData;">
+
+              <div *ngFor="let comment of comments" class=" pb-4"
+                [ngClass]="{'chat-message-left': comment.user[0]._id != loggedInUser, 'chat-message-right': comment.user[0]._id == loggedInUser}">
+                <div>
+                  <img [src]="comment.user[0]?.profImage | defaultImage:comment.user[0]?.profImage"
+                    class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                  <div class="text-muted small text-nowrap mt-2">{{comment.createdAt | date:'short'}}</div>
+                </div>
+                <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                  <div class="font-weight-bold mb-1">{{ (comment.user[0]._id == loggedInUser) ? 'You' :
+                    comment.user[0].firstname}}</div>
+                  {{comment.comment}}
+                </div>
+              </div>
+
+              <!-- <div class="chat-message-left pb-4">
+                <div>
+                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
+                    alt="Sharon Lessman" width="40" height="40">
+                  <div class="text-muted small text-nowrap mt-2">2:34 am</div>
+                </div>
+                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                  <div class="font-weight-bold mb-1">Sharon Lessman</div>
+                  Sit meis deleniti eu, pri vidit meliore docendi ut, an eum erat animal commodo.
+                </div>
+              </div> -->
+            </div>
+            <ng-template #noData>
+              <div class="chat-messages p-4"><p>No Discussion Found</p></div>
+            </ng-template>
+          </div>
+          <form [formGroup]="form" (ngSubmit)="sendMessage()">
+            <div class="flex-grow-0 py-3 px-4 border-top">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Type your message" formControlName="comment">
+
+                <button class="btn btn-primary" type="submit">Send</button>
+              </div>
+            </div>
+            <div class="error-span" *ngIf="isSubmitted && fvalues.comment.errors">
+              <div *ngIf="isSubmitted && fvalues.comment.errors.required" style="color: red;margin-left: 20px;">*Comment is required</div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
