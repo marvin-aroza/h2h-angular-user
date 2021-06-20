@@ -72,9 +72,8 @@
                             <a href="#" data-toggle="collapse" data-target=".forum-content"><img [src]="forum?.user[0]?.profImage | defaultImage:forum?.user[0]?.profImage" class="mr-3 rounded-circle" width="50" alt="User" /></a>
                             <div class="media-body">
                                 <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">{{forum.title}}</a></h6>
-                                <p class="text-secondary">
-                                    {{forum.body | stringChecker:forum.body}}
-                                </p>
+                                <div class="text-secondary" [innerHTML]="forum.body | stringChecker:forum.body">
+                                </div>
                                 <p class="text-muted"><a href="javascript:void(0)">{{forum?.user[0]?.firstname}}</a> Authored on <span class="text-secondary font-weight-bold">{{ forum.createdAt | date:'medium'}}</span></p>
                             </div>
                             <!-- <div class="text-muted small text-center align-self-center">
@@ -244,6 +243,9 @@
                         <div class="custom-file form-control-sm mt-3" style="max-width: 300px;">
                             <input type="file" class="custom-file-input" id="customFile" multiple="" (change)="onImgFileChange($event)"/>
                             <label class="btn btn-primary" style="cursor: pointer;" for="customFile">Click here to add attachment</label>
+                            <div>
+                              <p>{{imgName}}</p>
+                            </div>
                         </div>
                         <!-- <ckeditor [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor> -->
                     </div>

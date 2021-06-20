@@ -23,7 +23,7 @@ export class PostService {
     let headers: HttpHeaders = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     headers = headers.append('Accept', 'application/json');
-    return this.http.get<any>(`${environment.apiUrl}/post/all-list/${limit}`, {
+    return this.http.get<any>(`${environment.apiUrl}/post/user-list-all-approved`, {
       headers: headers
     })
     .pipe(map((result: any) => {

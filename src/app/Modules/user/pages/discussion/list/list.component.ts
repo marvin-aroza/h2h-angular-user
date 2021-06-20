@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
   isSubmitted=false;
   isLoaded=false;
   imgFile:any = '';
+  imgName:any
   // public Editor = ClassicEditor;
 
   constructor(
@@ -117,7 +118,7 @@ export class ListComponent implements OnInit {
 
   onImgFileChange(event:any){
     if (event.target.files.length > 0) {
-
+      this.imgName = event.target.files[0].name
       const file = event.target.files[0];
       this.form.get('img')!.setValue(file);
 

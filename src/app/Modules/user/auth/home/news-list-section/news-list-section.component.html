@@ -13,7 +13,7 @@
                       </div>
                   </div>
                   <div class="col-md-7 animate-box" style="cursor: pointer;">
-                      <a  class="fh5co_magna py-2" >{{post.title}} </a> <a  class="fh5co_mini_time py-3"> {{post?.firstname[0]?.firstname}} {{post?.firstname[0]?.lastname}} -
+                      <a  class="fh5co_magna py-2" >{{post.title}} </a> <a  class="fh5co_mini_time py-3"> {{post?.user[0]?.firstname}} {{post?.user[0]?.lastname}} -
                         {{post.createdAt | date: 'short'}} </a>
                       <div class="fh5co_consectetur" [innerHTML]="post.description | stringChecker:post.description:'para'">
                       </div>

@@ -96,6 +96,7 @@ export class EditPostComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
+            this.router.navigate(['']);
             // window.location.reload();
           });
         } else {
