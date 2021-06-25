@@ -44,6 +44,19 @@ export class DonateService {
     }));
   }
 
+  updateDonate(id:any,formData:any) {
+    console.log(formData);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.patch<any>(`${environment.apiUrl}/donate/${id}`, formData, {
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+        return result;
+    }));
+  }
+
   getDonatebyId(donateId:any) {
     console.log(donateId);
     let headers: HttpHeaders = new HttpHeaders();

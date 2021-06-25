@@ -1,0 +1,22 @@
+
+<div class="container-fluid mt-4 mb-4" style="width: 550px;">
+  <div class="card post-card" *ngIf="contactDetails" style="max-height: 500px;">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h3>View Reply</h3>
+
+    </div>
+    <div class="card-body">
+      <table [cellPadding]="20">
+        <tr>
+          <td>Your message:-</td>
+          <td>{{contactDetails.message}}</td>
+        </tr>
+        <tr>
+          <td>Admin Reply:-</td>
+          <td>{{contactDetails.response}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>

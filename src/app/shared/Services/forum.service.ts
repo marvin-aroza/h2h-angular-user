@@ -44,6 +44,19 @@ export class ForumService {
     }));
   }
 
+  updateForum(id:any,formData:any) {
+    console.log(formData);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.patch<any>(`${environment.apiUrl}/forum/${id}`, formData, {
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+        return result;
+    }));
+  }
+
   getForumbyId(forumId:any) {
     console.log(forumId);
     let headers: HttpHeaders = new HttpHeaders();

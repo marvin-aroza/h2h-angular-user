@@ -35,6 +35,7 @@ import { ErrorInterceptor } from 'src/app/shared/Interceptors/error.interceptor'
 //Services
 import { AuthService } from 'src/app/shared/Services/auth.service';
 import { ModalService } from 'src/app/shared/Services/modal.service'
+import { DonateService } from 'src/app/shared/Services/donate.service'
 
 
 @NgModule({
@@ -59,7 +60,7 @@ import { ModalService } from 'src/app/shared/Services/modal.service'
     NgxPaginationModule,
     CKEditorModule
   ],
-  providers: [ AuthService, ModalService,
+  providers: [ AuthService, ModalService, DonateService,
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

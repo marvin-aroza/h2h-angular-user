@@ -5,6 +5,7 @@ import { UserService } from 'src/app/shared/Services/user.service'
 import { AuthService } from 'src/app/shared/Services/auth.service'
 import { ContactService } from 'src/app/shared/Services/contact.service'
 import { PostService } from 'src/app/shared/Services/post.service'
+import { ModalService } from 'src/app/shared/Services/modal.service'
 
 //Enums
 import { Gender } from 'src/app/shared/Constants/gender'
@@ -36,6 +37,7 @@ export class ViewComponent implements OnInit {
     private ContactService: ContactService,
     private postService: PostService,
     private fb: FormBuilder,
+    private modalService:ModalService
   ) {
     window.scroll(0,0);
   }
@@ -126,6 +128,41 @@ console.log(formData);
         }
       });
     }
+  }
+
+   //upload profile image
+   profileImageUpload(event:any) {
+    const file = (event.target as HTMLInputElement).files![0];
+    console.log(file);
+    const formData = new FormData()
+    formData.append('profImage', file);
+    this.userService.updateProfileImage(this.user.id, formData).subscribe(res => {
+      console.log(res);
+      if(res.status) {
+        Swal.fire({
+            icon: 'success',
+            title: res.message,
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            // this.valueChanged = false;
+            // this.enableFields('');
+            this.getUserDetails();
+            // this.reloadService.reloadNewLogic();
+          });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: res.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    });
+  }
+
+  viewReply(id:any) {
+    this.modalService.viewReplyonContact(id);
   }
 
 }

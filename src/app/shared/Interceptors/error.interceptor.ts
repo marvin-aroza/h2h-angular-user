@@ -9,6 +9,7 @@ import {
 //Rxjs library functions
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import Swal from 'sweetalert2'
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -20,7 +21,12 @@ export class ErrorInterceptor implements HttpInterceptor {
 console.log(err);
       //Handle http errors according to their status codes
       if(err.status === 400) {
-        console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message,
+          showConfirmButton: false,
+          timer: 3000
+        });
       } else if(err.status === 401) {
 
       } else if(err.status === 422) {

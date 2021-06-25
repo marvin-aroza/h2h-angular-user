@@ -44,4 +44,17 @@ export class UserService {
         return result;
     }));
   }
+
+  //update profile image
+  updateProfileImage(id:any, formData:any) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.patch<any>(`${environment.apiUrl}/user/profile-upload/${id}`, formData,{
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+        return result;
+    }));
+  }
 }

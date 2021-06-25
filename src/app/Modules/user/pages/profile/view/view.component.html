@@ -5,7 +5,9 @@
         <div class="card">
           <div class="card-body text-center bg-primary rounded-top">
             <div class="user-box">
-              <img [src]="userDetails?.profImage | defaultImage:userDetails?.profImage" alt="user avatar">
+              <img [src]="userDetails?.profImage | defaultImage:userDetails?.profImage" alt="user avatar" style="height:110px !important">
+              <input type="file" #fileUpload hidden (change)="profileImageUpload($event)">
+        <button class="btn" (click)="fileUpload.click();"><i class="fa fa-upload" style="cursor: pointer;"></i></button>
             </div>
             <h5 class="mb-1 text-white">{{userDetails.firstname}} {{userDetails.lastname}}</h5>
             <!-- <h6 class="text-light">UI/UX Engineer</h6> -->
@@ -96,6 +98,8 @@
                       <tr *ngFor="let post of postList" [routerLink]="['/page/blog/edit', post._id]" style="cursor: pointer;">
                         <td>
                           <strong>{{post.title}}</strong>
+                          <p [ngClass]="{'red' : post.status == 'reject', 'green': post.status == 'accept', 'orange': post.status == 'pending'}">{{post.status}}</p>
+                          <p style="color:red" *ngIf="post.comments != null">Admin commented on your Post. Click to read the comment</p>
                         </td>
                       </tr>
                     </tbody>
@@ -105,22 +109,15 @@
               <!--/row-->
             </div>
             <div class="tab-pane" id="messages">
-              <!-- <div class="alert alert-info alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <div class="alert-icon">
-                  <i class="icon-info"></i>
-                </div>
-                <div class="alert-message">
-                  <span><strong>Info!</strong> Lorem Ipsum is simply dummy text.</span>
-                </div>
-              </div> -->
               <table class="table table-hover table-striped" *ngIf="contactList">
                 <tbody>
-                  <tr>
-                    <td *ngFor="let cont of contactList">
+                  <tr  *ngFor="let cont of contactList">
+                    <td>
                       <span class="float-right font-weight-bold">{{cont.createdAt | date:'short'}}</span> {{cont.message
                       | stringChecker:cont.message}}
+                      <p *ngIf="cont.response" style="color: red;"><br>Admin has replied to your message.  <a style="cursor: pointer;" (click)="viewReply(cont._id)">Click here to view message</a></p>
                     </td>
+
                   </tr>
                 </tbody>
               </table>

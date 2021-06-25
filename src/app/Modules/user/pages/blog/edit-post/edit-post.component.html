@@ -4,6 +4,13 @@
   <div class="contact-form" *ngIf="isLoaded">
       <!-- Form -->
       <form id="contact-us" [formGroup]="Form" class="user" (ngSubmit)="createPost()">
+
+          <div *ngIf="postDetails && postDetails.comments != null">
+            <h4 style="color: red;">Admin has commented on your post. Please review and update it</h4>
+            <div style="padding: 20px;">
+              <p>{{postDetails.comments}}</p>
+            </div>
+          </div>
           <!-- Left Inputs -->
           <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
               <!-- Name -->

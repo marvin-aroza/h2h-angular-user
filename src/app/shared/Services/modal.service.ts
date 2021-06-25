@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 //components
 import { RegisterComponent } from 'src/app/Modules/user/auth/register/register/register.component'
 import { LoginComponent } from 'src/app/Modules/user/auth/login/login/login.component'
+import { ViewResponseComponent } from 'src/app/Modules/user/pages/profile/view-response/view-response.component'
 
 //Material import for modal
 import { MatDialog } from '@angular/material/dialog';
@@ -62,6 +63,20 @@ export class ModalService {
     } else {
       return false
     }
+  }
+
+  viewReplyonContact(id:any): void {
+    this.dialog.closeAll(); // This line close all existing open modals
+
+    const dialogRef = this.dialog.open(ViewResponseComponent, {
+
+      backdropClass: 'backdropBackground',
+      data: { _id: id }
+    });
+
+    dialogRef.afterClosed().subscribe((result: { food: any; }) => {
+      console.log('The dialog was closed', result);
+    });
   }
 
 

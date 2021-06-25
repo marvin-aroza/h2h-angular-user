@@ -6,12 +6,14 @@ import { ViewComponent } from './view/view.component';
 
 //modules
 import { SharedModule } from 'src/app/shared/shared.module'
-import { FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ViewResponseComponent } from './view-response/view-response.component'
 
 
 @NgModule({
   declarations: [
-    ViewComponent
+    ViewComponent,
+    ViewResponseComponent
   ],
   imports: [
     CommonModule,
