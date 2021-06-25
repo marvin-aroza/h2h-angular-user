@@ -50,6 +50,11 @@ const routes: Routes = [
     canActivate: [UesrAuthGuard],
     loadChildren: () => import(`./events/events.module`).then(m => m.EventsModule)
   },
+  {
+    path: 'covid',
+    canActivate: [UesrAuthGuard],
+    loadChildren: () => import(`./covid/covid.module`).then(m => m.CovidModule)
+  },
 ];
 
 @NgModule({
