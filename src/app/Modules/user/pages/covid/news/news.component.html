@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div style="display: flex;justify-content: flex-end;padding: 30px;">
+  <select class="form-control" style="width:150px" (change)="changeFilter($event.target)">
+    <option *ngFor="let cat of categories">{{cat}}</option>
+  </select>
+  </div>
+  <h1 style="font-weight: bolder;">{{this.filter | uppercase}}</h1>
+  <iframe frameborder="0" width="100%" height="1100px" scrolling="yes" [src]="url | urlSantize" frameborder="0"></iframe>
+</div>

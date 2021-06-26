@@ -8,6 +8,7 @@ import { ViewComponent } from './view/view.component';
 import { SharedModule } from 'src/app/shared/shared.module'
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ViewResponseComponent } from './view-response/view-response.component'
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ViewResponseComponent } from './view-response/view-response.component'
     ProfileRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class ProfileModule { }

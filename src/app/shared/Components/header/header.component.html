@@ -104,10 +104,14 @@
             <a class="nav-link nav-new-color" style="color: white !important;">Donations <span
                 class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item " [routerLink]="['/page/covid']" [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link nav-new-color" style="color: white !important;">Covid-19 <span
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-new-color dropdown-toggle" style="color: white !important;" href="#"
+              id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Covid-19 <span
                 class="sr-only">(current)</span></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1" *ngIf="catList">
+              <a class="dropdown-item"  [routerLink]="['/page/covid']">Covid Stats</a>
+              <a class="dropdown-item"  [routerLink]="['/page/covid/news']">Covid News</a>
+            </div>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link nav-new-color dropdown-toggle" style="color: white !important;" href="#"

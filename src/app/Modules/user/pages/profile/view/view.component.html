@@ -95,7 +95,7 @@
                   <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> </h5>
                   <table class="table table-hover table-striped" *ngIf="postList">
                     <tbody>
-                      <tr *ngFor="let post of postList" [routerLink]="['/page/blog/edit', post._id]" style="cursor: pointer;">
+                      <tr *ngFor="let post of postList| paginate: { itemsPerPage: 10, currentPage: p }" [routerLink]="['/page/blog/edit', post._id]" style="cursor: pointer;">
                         <td>
                           <strong>{{post.title}}</strong>
                           <p [ngClass]="{'red' : post.status == 'reject', 'green': post.status == 'accept', 'orange': post.status == 'pending'}">{{post.status}}</p>
@@ -104,6 +104,7 @@
                       </tr>
                     </tbody>
                   </table>
+                  <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
                 </div>
               </div>
               <!--/row-->
@@ -120,6 +121,7 @@
 
                   </tr>
                 </tbody>
+                <!-- <pagination-controls class="my-pagination2" (pageChange)="p1 = $event"></pagination-controls> -->
               </table>
             </div>
             <div class="tab-pane" id="edit" *ngIf="formLoaded">

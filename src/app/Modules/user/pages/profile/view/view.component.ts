@@ -30,6 +30,8 @@ export class ViewComponent implements OnInit {
   form!: FormGroup;
   formLoaded = false;
   isFormSubmitted = false;
+  p:number = 1;
+  p1:number = 1;
 
   constructor(
     private userService: UserService,

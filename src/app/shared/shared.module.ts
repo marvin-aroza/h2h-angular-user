@@ -52,6 +52,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { LoopLimiterPipe } from './Pipes/loop-limiter.pipe';
 import { DateConvertorPipe } from './Pipes/date-convertor.pipe';
+import { UrlSantizePipe } from './Pipes/url-santize.pipe';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { DateConvertorPipe } from './Pipes/date-convertor.pipe';
     DefaultImagePipe,
     StringCheckerPipe,
     LoopLimiterPipe,
-    DateConvertorPipe
+    DateConvertorPipe,
+    UrlSantizePipe
   ],
   imports: [
     CommonModule,
@@ -118,7 +120,8 @@ import { DateConvertorPipe } from './Pipes/date-convertor.pipe';
     DefaultImagePipe,
     StringCheckerPipe,
     LoopLimiterPipe,
-    DateConvertorPipe
+    DateConvertorPipe,
+    UrlSantizePipe
   ]
 })
 export class SharedModule { }
