@@ -12,13 +12,14 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms'
 //Required Services
 import { AuthService } from 'src/app/shared/Services/auth.service'
 import { ModalService } from 'src/app/shared/Services/modal.service'
+import { PasswordService } from 'src/app/shared/Services/password.service'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-reset-link',
+  templateUrl: './reset-link.component.html',
+  styleUrls: ['./reset-link.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ResetLinkComponent implements OnInit {
 
   //Variables
   form!: FormGroup;
@@ -30,27 +31,18 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     public router: Router,
-    private ModalService: ModalService
+    private ModalService: ModalService,
+    private passService: PasswordService,
     ) { }
 
   ngOnInit(): void {
     this.createForm();
   }
 
-  //This functions open the registration model
-  register(): void {
-    this.ModalService.register();
-  }
-
-  forgotPass(): void {
-    this.ModalService.resetPasswordLink();
-  }
-
   //Create the form instance
   createForm() {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]]
     })
     this.formLoaded = true;
   }
@@ -69,12 +61,11 @@ export class LoginComponent implements OnInit {
     } else {
       //request body for login
       let formData = {
-        email: this.f.email.value,
-        password: this.f.password.value
+        email: this.f.email.value
       }
 
       //Login service call to send request to server
-      this.authService.login(formData).subscribe(res => {
+      this.passService.resetPasswordLink(formData, 'user').subscribe(res => {
         console.log(res);
         if(res.status) {
           // window.location.reload();

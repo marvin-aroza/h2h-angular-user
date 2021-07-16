@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import(`./contact/contact.module`).then(m => m.ContactModule)
   },
   {
+    path: 'password',
+    loadChildren: () => import(`./password/password.module`).then(m => m.PasswordModule)
+  },
+  {
   path: '',
   component: HeaderComponent,
   loadChildren: () => import(`./home/home.module`).then(m=>m.HomeModule)

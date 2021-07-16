@@ -15,6 +15,7 @@ export class NewsListSectionComponent implements OnInit, OnDestroy {
   //variables
   categories:any
   postList:any
+  popular:any
 
   constructor(
     public modalService: ModalService,
@@ -25,6 +26,7 @@ export class NewsListSectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getPost();
     this.getCategories();
+    this.getPopular();
   }
 
   checkUserLoggedIn() {
@@ -50,6 +52,13 @@ export class NewsListSectionComponent implements OnInit, OnDestroy {
     this.catService.getCategory().subscribe(res => {
       console.log(res);
       this.categories = res.data
+    });
+  }
+
+  getPopular() {
+    this.postService.getPopular().subscribe(res => {
+      console.log(res);
+      this.popular = res.data
     });
   }
 

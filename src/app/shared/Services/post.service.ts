@@ -125,4 +125,16 @@ export class PostService {
       return result;
     }))
   }
+
+  //get popular
+  getPopular() {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.get<any>(`${environment.apiUrl}/popular-post`,{
+      headers:headers
+    }).pipe(map((result:any)=>{
+      return result;
+    }))
+  }
 }

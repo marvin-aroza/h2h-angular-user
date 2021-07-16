@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 //services
 import { CategoryService } from 'src/app/shared/Services/category.service'
 import { NewsletterService } from 'src/app/shared/Services/newsletter.service'
+import { PostService } from 'src/app/shared/Services/post.service'
 import Swal from 'sweetalert2'
 import {Router} from '@angular/router'
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -19,13 +20,16 @@ export class FooterComponent implements OnInit, OnDestroy {
   subscription1!: Subscription
   subscription2!: Subscription
   subscriptions: Subscription[] = []
+  popular:any
 
   constructor(
     private categoryService:CategoryService,
     private newsletterService: NewsletterService,
+    private postService: PostService,
     private router:Router,
   ) {
     this.getCategory();
+    this.getPopular();
   }
 
   ngOnInit(): void {
@@ -75,6 +79,13 @@ export class FooterComponent implements OnInit, OnDestroy {
       }
     });
     this.subscriptions.push(this.subscription2);
+  }
+
+  getPopular() {
+    this.postService.getPopular().subscribe(res => {
+      console.log(res);
+      this.popular = res.data
+    });
   }
 
 }

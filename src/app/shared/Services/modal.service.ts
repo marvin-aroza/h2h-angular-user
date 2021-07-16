@@ -1,3 +1,5 @@
+import { ResetPasswordComponent } from './../../Modules/user/auth/password/reset-password/reset-password.component';
+import { ResetLinkComponent } from './../../Modules/user/auth/password/reset-link/reset-link.component';
 import { Injectable } from '@angular/core';
 
 //components
@@ -30,6 +32,35 @@ export class ModalService {
       console.log('The dialog was closed', result);
     });
   }
+
+  //This functions open the reset link model
+  resetPasswordLink(): void {
+    this.dialog.closeAll(); // This line close all existing open modals
+    const dialogRef = this.dialog.open(ResetLinkComponent, {
+
+      backdropClass: 'backdropBackground',
+      data: { name: 'google', animal: '' }
+    });
+
+    dialogRef.afterClosed().subscribe((result: { food: any; }) => {
+      console.log('The dialog was closed', result);
+    });
+  }
+
+  //This functions open the reset password model
+  resetPassword(tokenId:any): void {
+    this.dialog.closeAll(); // This line close all existing open modals
+    const dialogRef = this.dialog.open(ResetPasswordComponent, {
+
+      backdropClass: 'backdropBackground',
+      data: { token : tokenId }
+    });
+
+    dialogRef.afterClosed().subscribe((result: { food: any; }) => {
+      console.log('The dialog was closed', result);
+    });
+  }
+
 
   login(): void {
     this.dialog.closeAll(); // This line close all existing open modals

@@ -28,14 +28,16 @@
                   <li style="cursor: pointer;" *ngFor="let cat of categoryList" [routerLink]="['/page/blog', cat._id]"><a class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; {{cat.name}}</a></li>
               </ul>
           </div>
-          <div class="col-12 col-md-5 col-lg-3 position_footer_relative">
-              <div class="footer_main_title py-3"> Most Viewed Posts</div>
-              <div class="footer_makes_sub_font"> Dec 31, 2016</div>
+          <div class="col-12 col-md-5 col-lg-3 position_footer_relative" *ngIf="popular">
+              <div class="footer_main_title py-3"> Most Popular Posts</div>
+              <div *ngFor="let pop of popular | loopLimiter:popular:3">
+                <div class="footer_makes_sub_font"> {{pop.createdAt | date:'short'}}</div>
+                <a href="#" class="footer_post pb-4"> {{pop.title}} </a>
+              </div>
+              <!-- <div class="footer_makes_sub_font"> Dec 31, 2016</div>
               <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
               <div class="footer_makes_sub_font"> Dec 31, 2016</div>
-              <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-              <div class="footer_makes_sub_font"> Dec 31, 2016</div>
-              <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
+              <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a> -->
               <div class="footer_position_absolute"><img src="assets/images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
           </div>
       </div>

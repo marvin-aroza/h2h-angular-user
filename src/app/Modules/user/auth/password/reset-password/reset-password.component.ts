@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional,Inject, ViewChild, ElementRef  } from '@angular/core';
 
 //Material import for modal
-import { MatDialog } from '@angular/material/dialog';
+// import { MatDialog } from '@angular/material/dialog';
+import { MatDialog,MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog'
 import Swal from 'sweetalert2'
 
 
@@ -12,45 +13,40 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms'
 //Required Services
 import { AuthService } from 'src/app/shared/Services/auth.service'
 import { ModalService } from 'src/app/shared/Services/modal.service'
+import { PasswordService } from 'src/app/shared/Services/password.service'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
 
   //Variables
   form!: FormGroup;
   formLoaded:Boolean = false;
   isFormSubmitted:Boolean = false;
+  token:any
 
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
     private authService: AuthService,
     public router: Router,
-    private ModalService: ModalService
+    private ModalService: ModalService,
+    private passService: PasswordService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data:any,
     ) { }
 
   ngOnInit(): void {
+    this.token=this.data.token;
     this.createForm();
-  }
-
-  //This functions open the registration model
-  register(): void {
-    this.ModalService.register();
-  }
-
-  forgotPass(): void {
-    this.ModalService.resetPasswordLink();
   }
 
   //Create the form instance
   createForm() {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      newPassword: ['', [Validators.required]]
     })
     this.formLoaded = true;
   }
@@ -69,12 +65,12 @@ export class LoginComponent implements OnInit {
     } else {
       //request body for login
       let formData = {
-        email: this.f.email.value,
-        password: this.f.password.value
+        newPassword: this.f.newPassword.value,
+        resettoken: this.token
       }
 
       //Login service call to send request to server
-      this.authService.login(formData).subscribe(res => {
+      this.passService.resetPassword(formData).subscribe(res => {
         console.log(res);
         if(res.status) {
           // window.location.reload();
@@ -85,7 +81,7 @@ export class LoginComponent implements OnInit {
               timer: 1500
             }).then(() => {
               this.ModalService.close();
-              window.location.reload()
+              this.router.navigate(['']);
             });
         } else {
           Swal.fire({
@@ -98,5 +94,6 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
 
 }
