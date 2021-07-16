@@ -14,7 +14,7 @@ export class DateConvertorPipe implements PipeTransform {
     console.log(strDateTime);
 
     if(args[1] == 'date') {
-       return dateTime.getDate() - 1
+       return dateTime.getDate()
     } else if(args[1] == 'month') {
       return month[dateTime.getMonth()]
     }

@@ -16,6 +16,16 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms'
 
 //Validators
 import { MustMatch } from 'src/app/shared/Validators/password_match'
+
+interface Student {
+  name: string,
+  class: () => void
+}
+
+interface Teacher {
+  name: string,
+  Subject: () => void
+}
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -27,7 +37,16 @@ export class RegisterComponent implements OnInit {
   gender = Gender
   form!: FormGroup;
   formLoaded = false;
-  isFormSubmitted = false;
+  isFormSubmitted : Boolean  = false;
+
+  user = {
+    name: 'abc',
+    class: () => console.log('this is student'),
+    address: 'sds'
+  }
+  empty: any
+
+  test:any = 'vaibhs'
 
   constructor(
     public dialog: MatDialog,
@@ -36,10 +55,21 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService
     ) {
       this.createForm();
+      console.log(this.getData(this.user))
      }
+
+    getData(school: Student | Teacher) : Student | Teacher {
+      console.log(school);
+      return school
+    }
+
 
   ngOnInit(): void {
     console.log(this.gender);
+  }
+
+  testFunc(event:any) {
+    this.test = event.value
   }
 
   login(): void {
