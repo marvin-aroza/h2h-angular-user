@@ -35,7 +35,9 @@ import { ErrorInterceptor } from 'src/app/shared/Interceptors/error.interceptor'
 //Services
 import { AuthService } from 'src/app/shared/Services/auth.service';
 import { ModalService } from 'src/app/shared/Services/modal.service'
-import { DonateService } from 'src/app/shared/Services/donate.service'
+import { DonateService } from 'src/app/shared/Services/donate.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 
 @NgModule({
@@ -58,7 +60,13 @@ import { DonateService } from 'src/app/shared/Services/donate.service'
     MatIconModule,
     MatProgressBarModule,
     NgxPaginationModule,
-    CKEditorModule
+    CKEditorModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [ AuthService, ModalService, DonateService,
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
